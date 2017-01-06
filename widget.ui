@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1070</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1070</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1070</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>Fast Scale-Adaptive Correlation Tracking</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icon/program.png</normaloff>:/icon/program.png</iconset>
+  </property>
+  <widget class="QGroupBox" name="groupBoxScalePara">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>500</y>
+     <width>261</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Scale Filter Parameters</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>240</width>
+      <height>108</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="labelScaleMinRhoRate">
+         <property name="text">
+          <string>Minimum rho coefficient:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>17</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBoxScaleMinRhoCoef"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="labelScalePattSz">
+         <property name="text">
+          <string>Feature size:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBoxScalePattSz"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelScaleCellSz">
+         <property name="text">
+          <string>Cell size:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBoxScaleCellSz"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QLabel" name="labelScaleGaussSigmaRate">
+         <property name="text">
+          <string>Gauss label sigma rate:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>13</width>
+           <height>15</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>1 /</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBoxScaleGaussSigmaRate"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QLabel" name="labelScaleLearnRate">
+         <property name="text">
+          <string>Learn rate:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBoxScaleLearnRate"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxTransPara">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>320</y>
+     <width>261</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Translational Filter Parameters</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>20</y>
+      <width>240</width>
+      <height>108</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="labelTransPad">
+         <property name="text">
+          <string>Padding:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>108</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBoxTransPad"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="labelTransPattSz">
+         <property name="text">
+          <string>Feature size:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBoxTransPattSz"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelTransCellSz">
+         <property name="text">
+          <string>Cell size:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBoxTransCellSz"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="labelTransGaussSigmaRate">
+         <property name="text">
+          <string>Gauss label sigma rate:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>13</width>
+           <height>15</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>1 /</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBoxTransGaussSigmaRate"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="labelTransLearnRate">
+         <property name="text">
+          <string>Learn rate:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBoxTransLearnRate"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QCheckBox" name="checkBoxUseScale">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>470</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Use Scale Estimation</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBoxInitManu">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>290</y>
+     <width>161</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Initialize manually</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonTracking">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>600</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tracking</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelTextCurApp">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>70</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Current Appearence</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelTextGlbApp">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>70</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Global Appearence</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>260</y>
+     <width>251</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_9">
+    <item>
+     <widget class="QLineEdit" name="lineEditPath"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonBrowse">
+      <property name="text">
+       <string>Browse</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>230</y>
+     <width>171</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_10">
+    <item>
+     <widget class="QLabel" name="labelSource">
+      <property name="text">
+       <string>Source:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="comboBoxSource">
+      <item>
+       <property name="text">
+        <string>Camera</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Video</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Image Sequence</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="labelCurApp">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>100</y>
+     <width>100</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelGlbApp">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>100</y>
+     <width>100</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="lcdNumberFrame">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>10</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="lcdNumberFps">
+   <property name="geometry">
+    <rect>
+     <x>980</x>
+     <y>10</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelFrameNum">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>20</y>
+     <width>54</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>FrameNum:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelFps">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>20</y>
+     <width>24</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>FPS:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelFrame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>768</width>
+     <height>576</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="inWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>768</width>
+     <height>576</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="labelRect">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>768</width>
+      <height>576</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSetParam">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>600</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Set Parameter</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonInit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>600</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Play</string>
+   </property>
+  </widget>
+  <zorder>lcdNumberFps</zorder>
+  <zorder>labelFps</zorder>
+  <zorder>groupBoxScalePara</zorder>
+  <zorder>groupBoxTransPara</zorder>
+  <zorder>checkBoxUseScale</zorder>
+  <zorder>checkBoxInitManu</zorder>
+  <zorder>pushButtonTracking</zorder>
+  <zorder>labelTextCurApp</zorder>
+  <zorder>labelTextGlbApp</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>labelCurApp</zorder>
+  <zorder>labelGlbApp</zorder>
+  <zorder>lcdNumberFrame</zorder>
+  <zorder>labelFrameNum</zorder>
+  <zorder>labelFrame</zorder>
+  <zorder>inWidget</zorder>
+  <zorder>pushButtonSetParam</zorder>
+  <zorder>pushButtonInit</zorder>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
