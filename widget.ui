@@ -26,7 +26,7 @@
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>久之洋目标跟踪算法演示软件V1.0</string>
+   <string>目标跟踪算法演示软件V1.0</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">
