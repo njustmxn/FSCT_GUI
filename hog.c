@@ -183,8 +183,8 @@ void calcHogFeature(FHOG* self, const unsigned char* image, int width, int heigh
              * 2. 当cell(1,1)为图像最下方cell时, 仅能辐射到cell(2,1);
              * 3. 当cell(1,1)为图像最右下方cell时, 无cell与其构成共享关系;
              */
-            float cellX = x / self->cellSize; //x方向cell归属值
-            float cellY = y / self->cellSize; //y方向cell归属值
+            float cellX = x * 1.0f / self->cellSize; //x方向cell归属值
+            float cellY = y * 1.0f / self->cellSize; //y方向cell归属值
             int cellIdx = (int)floor(cellX); //x方向截断的cell标号
             int cellIdy = (int)floor(cellY); //y方向截断的cell标号
             float wx2 = cellX - cellIdx; //x方向上分配给2号cell的权重

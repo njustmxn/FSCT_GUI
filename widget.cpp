@@ -98,11 +98,11 @@ void Widget::onPushButtonBrowse_clicked()
 {
     QString filename;
     if(ui->comboBoxSource->currentIndex() == 1)
-        filename = QFileDialog::getOpenFileName(this, "Open Video",
+        filename = QFileDialog::getOpenFileName(this, QStringLiteral("打开视频文件"),
                                                 QDir::currentPath(),
                                                 "Videos (*.avi)");
     else if(ui->comboBoxSource->currentIndex() == 2)
-        filename = QFileDialog::getExistingDirectory(this, "Open Image Sequence Directory",
+        filename = QFileDialog::getExistingDirectory(this, QStringLiteral("打开图片序列目录"),
                                                      QDir::currentPath(),
                                                      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     ui->lineEditPath->setText(filename);
@@ -424,16 +424,16 @@ void Widget::onPushButtonReset_clicked()
     pushButtonSetParamState = !pushButtonSetParamState; //改变（设置/重置）按钮状态
     if(pushButtonSetParamState) //Set功能
     {
-        ui->pushButtonSetParam->setText("Reset Parameter"); //改变（设置/重置）按钮文字
+        ui->pushButtonSetParam->setText(QStringLiteral("重置")); //改变（设置/重置）按钮文字
         ui->pushButtonInit->setEnabled(true); //设置（播放/初始化）按钮可用
-        ui->pushButtonInit->setText("Play"); //重新设置（播放/初始化）按钮文字
+        ui->pushButtonInit->setText(QStringLiteral("播放")); //重新设置（播放/初始化）按钮文字
         setInputWidgetAvaliable(false); //设置参数输入框不可用
         fsct->initParam(param);
         openInputSource();
     }
     else //Reset功能
     {
-        ui->pushButtonSetParam->setText("Set Parameter"); //改变（设置/重置）按钮文字
+        ui->pushButtonSetParam->setText(QStringLiteral("设置参数")); //改变（设置/重置）按钮文字
         ui->pushButtonInit->setEnabled(false); //设置（播放/初始化）按钮不可用
         setInputWidgetAvaliable(true); //设置参数输入框不可用
         setDefaultParam(); //重置默认参数
@@ -448,7 +448,7 @@ void Widget::onPushButtonReset_clicked()
     isInitState = false;
     isTrackingState = false;
     hasInitialized = false;
-    ui->pushButtonTracking->setText("Tracking"); //重新设置（跟踪）按钮文字
+    ui->pushButtonTracking->setText(QStringLiteral("跟踪")); //重新设置（跟踪）按钮文字
     ui->pushButtonTracking->setEnabled(false); //设置（跟踪）按钮不可用
     frameNum = 0;    
     m_isDown = false;
@@ -471,14 +471,14 @@ void Widget::onPushButtonInit_clicked()
     if(pushButtonInitState)
     {
         isInitState = false; //首先是播放功能，此时关闭初始化画框功能
-        ui->pushButtonInit->setText("Initialize"); //改变按钮文字，下一次点击为初始化功能
+        ui->pushButtonInit->setText(QStringLiteral("框选目标")); //改变按钮文字，下一次点击为初始化功能
         ui->pushButtonTracking->setEnabled(false); //设置Tracking按钮不可用
         timerPlay->start(5); //启动定时器，开始播放
     }
     else
     {
         isInitState = true; //开启初始化目标的画框功能
-        ui->pushButtonInit->setText("Play"); //改变按钮文字，下一次点击为继续播放功能
+        ui->pushButtonInit->setText(QStringLiteral("播放")); //改变按钮文字，下一次点击为继续播放功能
         ui->pushButtonTracking->setEnabled(true); //设置Tracking按钮可用
         timerPlay->stop(); //暂停定时器，开始初始化画框功能
     }
@@ -508,13 +508,13 @@ void Widget::onPushButtonTracking_clicked()
     if(pushButtonTrackingState) //跟踪状态
     {
         isTrackingState = true;
-        ui->pushButtonTracking->setText("Stop");
+        ui->pushButtonTracking->setText(QStringLiteral("停止"));
         timerTrack->start(1);
     }
     else //暂停状态
     {
         isTrackingState = false;
-        ui->pushButtonTracking->setText("Continue");
+        ui->pushButtonTracking->setText(QStringLiteral("继续"));
         timerTrack->stop();
     }
 }

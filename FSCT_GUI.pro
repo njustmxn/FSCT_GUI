@@ -11,46 +11,47 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = FSCT_GUI
 TEMPLATE = app
 
+CONFIG(debug, debug|release) {
+    DESTDIR =       $$PWD/debug
+    OBJECTS_DIR =   $$PWD/debug/obj
+    MOC_DIR =       $$PWD/debug/moc
+    RCC_DIR =       $$PWD/debug/rcc
+    UI_DIR =        $$PWD/debug/ui
+}
+
+CONFIG(release, debug|release) {
+    DESTDIR =       $$PWD/release
+    OBJECTS_DIR =   $$PWD/release/obj
+    MOC_DIR =       $$PWD/release/moc
+    RCC_DIR =       $$PWD/release/rcc
+    UI_DIR =        $$PWD/release/ui
+}
 
 SOURCES += main.cpp\
         widget.cpp \
-    corrtrack.cpp \
-    hog.c \
-    lpt.c
+        corrtrack.cpp \
+        hog.c \
+        lpt.c
 
 HEADERS  += widget.h \
-    corrtrack.h \
-    hog.h \
-    lpt.h
+        corrtrack.h \
+        hog.h \
+        lpt.h
 
 FORMS    += widget.ui
 
-INCLUDEPATH += D:\OpenCV3.1\build\include \
-                D:\OpenCV3.1\build\include\opencv \
-                D:\OpenCV3.1\build\include\opencv2
+INCLUDEPATH += D:\OpenCV3.1.0\build\include
 
-#CONFIG(release, debug|release){
-#LIBS += -LD:\OpenCV3.1\build\x86\vc10\lib\ \
-#    -lopencv_world310 \
+CONFIG(release, debug|release){
+LIBS += -LD:\OpenCV3.1.0\build\x64\vc10\lib \
+    -lopencv_world310 \
 
-#}
-#CONFIG(debug, debug|release){
-#LIBS += -LD:\OpenCV3.1\build\x86\vc10\lib\ \
-#    -lopencv_world310d
-#}
+}
+CONFIG(debug, debug|release){
+LIBS += -LD:\OpenCV3.1.0\build\x64\vc10\lib \
+    -lopencv_world310d
+}
 
 RC_FILE += icon.rc
+RESOURCES += res.qrc
 
-DEFINES += STATIC_PROG
-Release:LIBS += -LD:\OpenCV3.1\build\x86\vc10\staticlib\ \
-    -lopencv_world310 \
-    -lopencv_ts310 \
-    -lippicvmt \
-    -llibjpeg \
-    -lzlib \
-    -llibwebp \
-    -lIlmImf \
-    -llibjasper
-
-RESOURCES += \
-    res.qrc
